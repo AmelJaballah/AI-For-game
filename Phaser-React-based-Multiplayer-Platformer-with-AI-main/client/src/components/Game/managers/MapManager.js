@@ -78,7 +78,7 @@ export class MapManager {
         if (entityLayer && entityLayer.objects) {
             entityLayer.objects.forEach(obj => {
                 if (obj.type === 'spawnArea' || obj.class === 'spawnArea') {
-                    console.log('Found spawn area:', obj);
+                    console.log('🎯 Found spawn area:', obj);
                     
                     this.spawnArea = {
                         x: obj.x,
@@ -90,16 +90,16 @@ export class MapManager {
                     
                     // If it's a point object, we'll use it as the exact spawn point
                     if (this.spawnArea.isPoint) {
-                        console.log(`Spawn point at (${this.spawnArea.x}, ${this.spawnArea.y})`);
+                        console.log(`📍 Spawn point at (${this.spawnArea.x}, ${this.spawnArea.y})`);
                     } else {
-                        console.log(` Spawn area at (${this.spawnArea.x}, ${this.spawnArea.y}) size: ${this.spawnArea.width}x${this.spawnArea.height}`);
+                        console.log(`📍 Spawn area at (${this.spawnArea.x}, ${this.spawnArea.y}) size: ${this.spawnArea.width}x${this.spawnArea.height}`);
                     }
                 }
             });
         }
          // Fallback to default spawn if no spawn area found
         if (!this.spawnArea) {
-            console.warn(' No spawn area found in map, using default position');
+            console.warn('⚠️ No spawn area found in map, using default position');
             this.spawnArea = {
                 x: 100,
                 y: 200,

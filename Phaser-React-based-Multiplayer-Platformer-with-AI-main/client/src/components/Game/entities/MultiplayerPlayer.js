@@ -40,7 +40,7 @@ export class MultiplayerPlayer {
             );
 
             if (!this.sprite) {
-                console.error(' Failed to create player sprite');
+                console.error('❌ Failed to create player sprite');
                 return null;
             }
 

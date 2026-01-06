@@ -54,6 +54,14 @@ export class QuizManager {
         ];
     }
 
+    preload() {
+        // No need to load graphics assets anymore
+    }
+
+    create() {
+        // No Phaser UI creation needed
+    }
+
     showQuiz() {
         this.quizActive = true;
 

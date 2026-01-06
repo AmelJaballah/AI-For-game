@@ -32,7 +32,7 @@ export class PlayerManager {
 
         // TEACHER MODE: Don't create a physical player
         if (this.scene.isTeacher) {
-            console.log(' Teacher Mode: Skipping physical player creation');
+            console.log('🎓 Teacher Mode: Skipping physical player creation');
 
             // Create a dummy local player object to satisfy checks without a sprite
             this.localPlayer = {

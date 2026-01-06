@@ -29,6 +29,7 @@ export class Player {
         this.create(x, y);
     }
 
+    // client/src/components/Game/Player.js - Update create method
     create(x, y) {
         // Create player sprite using the first idle frame
         this.sprite = this.scene.physics.add.sprite(x, y, 'player_idle_1');

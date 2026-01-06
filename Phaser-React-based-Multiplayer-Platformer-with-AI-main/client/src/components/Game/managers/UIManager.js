@@ -1,3 +1,4 @@
+// client/src/components/Game/UIManager.js
 export class UIManager {
     constructor(scene) {
         this.scene = scene;
