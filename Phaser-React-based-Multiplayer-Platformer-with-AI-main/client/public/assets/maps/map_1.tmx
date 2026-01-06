@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="27">
+ <editorsettings>
+  <export target="map_1..csv" format="csv"/>
+ </editorsettings>
+ <tileset firstgid="1" name="world_tileset" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="../sprites/world_tileset.png" width="256" height="256"/>
+ </tileset>
+ <layer id="1" name="Ground" width="30" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,2,2,2,2,0,0,0,0,0,0,
+17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,0,201,201,201,0,0,0,0,0,0,0,
+17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,0,201,0,0,0,0,0,0,0,0,0,
+17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="solid">
+  <object id="1" x="-76.5" y="224" width="332" height="113">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="22" x="15.9091" y="96.3636" width="80.1818" height="15.5455">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="23" x="160" y="143.909" width="80.1818" height="16">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="24" x="320.273" y="224.273" width="79.5455" height="15.7273">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="entity">
+  <object id="3" name="Spikes" type="spikes" x="256.044" y="304" width="15.9588" height="15.8182"/>
+  <object id="4" name="Spikes" type="spikes" x="272.006" y="304.005" width="15.8182" height="15.8182"/>
+  <object id="5" name="Spikes" type="spikes" x="287.881" y="304.088" width="15.9588" height="15.8182"/>
+  <object id="6" name="Spikes" type="spikes" x="303.843" y="304.093" width="15.8182" height="15.8182"/>
+  <object id="7" name="Spikes" type="spikes" x="319.985" y="304.151" width="15.9588" height="15.8182"/>
+  <object id="8" name="Spikes" type="spikes" x="352.072" y="208.198" width="15.8182" height="15.8182"/>
+  <object id="11" name="Spikes" type="spikes" x="352.162" y="304.265" width="15.8182" height="15.8182"/>
+  <object id="12" name="Spikes" type="spikes" x="368.037" y="304.348" width="15.9588" height="15.8182"/>
+  <object id="13" name="Spikes" type="spikes" x="383.999" y="304.353" width="15.8182" height="15.8182"/>
+  <object id="14" name="Spikes" type="spikes" x="400.141" y="304.411" width="15.9588" height="15.8182"/>
+  <object id="15" name="Spikes" type="spikes" x="416.103" y="304.416" width="15.8182" height="15.8182"/>
+  <object id="16" name="Spikes" type="spikes" x="431.966" y="304.216" width="15.8182" height="15.8182"/>
+  <object id="17" name="Spikes" type="spikes" x="448.409" y="303.941" width="15.8182" height="15.8182"/>
+  <object id="18" name="Spikes" type="spikes" x="464.272" y="303.741" width="15.8182" height="15.8182"/>
+  <object id="20" name="Spikes" type="spikes" x="336.06" y="304.153" width="15.8182" height="15.8182"/>
+  <object id="21" name="Coin" type="coin" x="191.5" y="96" width="16.75" height="16.25">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>
