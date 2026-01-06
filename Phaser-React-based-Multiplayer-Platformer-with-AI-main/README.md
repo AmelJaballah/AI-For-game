@@ -1,91 +1,100 @@
-# The Notebook
-## Educational Multiplayer Platformer
+# EduPlatformer: Multiplayer AI-Powered Platformer
 
-EduPlatformer is an engaging educational platformer game that combines classic 2D platforming mechanics with interactive quiz challenges. Players explore vibrant levels, collect coins, and test their knowledge through integrated quizzes.
+EduPlatformer is an engaging educational platformer that combines classic 2D mechanics with **AI-generated quiz challenges**. Players explore levels, collect coins, and answer questions generated in real-time from **uploaded PDF documents**.
 
-## Core Gameplay
-- Classic Platformer Mechanics: Run, jump, and navigate through carefully designed levels
-- Interactive Quizzes: Encounter coins that trigger educational questions
-- Progressive Difficulty: Challenging obstacles and increasingly difficult questions
-- Score System: Earn points for correct answers and coin collection
+## 🚀 Core Features
 
-## Multiplayer Experience
-- Real-time Multiplayer: Play with friends in synchronized game sessions
-- Room-based System: Create or join game rooms with unique codes
-- Live Player Interzaction: See other players move in real-time
-- Competitive Scoring: Compete for high scores with other players
+### 🎮 Gameplay
+- **Classic Platforming**: Run, jump, and wall-jump through pixel-art levels.
+- **Multiplayer**: Real-time synchronization of movement and states using Socket.io. 
+- **Roles**: 
+    - **Student**: Plays the game, collects coins, answers questions.
+    - **Teacher/Host**: Orchestrates the game, uploads study materials (PDFs), supervizes the lobby.
 
-## Multiplayer Mode
-- Create or join a game room
-- Wait for players to join the session
-- Explore together in the same game world
-- Compete or collaborate to answer quiz questions
-- Track progress with real-time score updates
+### 🧠 AI-Powered Learning
+- **PDF-to-Quiz**: Upload any educational PDF (textbook, notes).
+- **On-Demand Generation**: The system uses a local LLM (**Ollama/Qwen**) to read the PDF and generate relevant multiple-choice questions automatically.
+- **in-Game Integration**: Questions appear dynamically when players collect "Quiz Coins".
 
 ---
 
-# Technical Architecture
-## Frontend
-- Phaser 3: Game engine for rendering and physics
-- React: UI framework for menus and lobby system
-- Socket.io Client: Real-time multiplayer communication
+## 🏗️ Technical Architecture
 
-## Backend
-- Node.js & Express: Server runtime and API
-- Socket.io: WebSocket connections for real-time features
-- Room Management: Dynamic game session handling
+### Frontend (Client)
+- **React**: Handles the UI overlay, Lobby system, PDF upload interface, and State management.
+- **Phaser 3**: dedicated game engine for rendering, physics (Arcade), and inputs.
+- **Socket.io-Client**: Syncs player coordinates (`x`, `y`, `velocity`), animations, and events.
 
-## Key Systems
-- Map Management: Tiled map integration with custom object layers
-- Player Physics: Custom collision detection and movement
-- Quiz System: Dynamic question loading and validation
-- Network Synchronization: Smooth multiplayer interpolation
-- State Management: Game progress and player data persistence
+### Backend (Server)
+- **Node.js + Express**: Serves API and health checks.
+- **Socket.io**: 
+    - Manages Rooms and connections.
+    - Authoritative source for Coin states and Scoreboards.
+    - Broadcasts AI-generated questions to all room members.
 
-## Educational Value
-Transforms learning into an engaging adventure by:
-- Making Learning Fun: Gamified approach to education
-- Instant Feedback: Immediate results for quiz answers
-- Progressive Challenges: Questions adapt to player performance
-- Collaborative Learning: Multiplayer encourages teamwork
+### AI Service
+- **Ollama**: Local AI runner.
+- **Model**: `qwen3:8b` (optimized for instruction following).
+- **Flow**: Browser extracts PDF text -> Sends to local Ollama API -> Returns JSON formatted questions -> React broadcasts to Server.
 
-# Getting Started
+---
 
-## Prerequisites
-- Node.js (v14 or higher)
-- Modern web browser with JavaScript enabled
+## 🛠️ Getting Started
 
-## Installation
-1. Clone the repository
-2. Navigate to the client directory
-3. Install dependencies: `npm install`
-4. Start the development server: `npm run dev`
-5. Open your browser to `http://localhost:3000`
-6. To deploy the multiplayer server go to the server directory
-7. Install dependencies: `npm install`
-8. Start the development server: `node server.js`
+### Prerequisites
+1.  **Node.js** (v16+)
+2.  **Ollama**: [Download here](https://ollama.com/)
+    - **Important**: You must pull the model used by the app.
+    - Run: `ollama pull qwen3:8b`
+    - Ensure Ollama is running (`ollama serve` or via desktop app) at `http://localhost:11434`.
 
-## Project Structure
+### Installation
+
+**1. Client (Game & UI)**
+```bash
+cd client
+npm install
+npm run dev
+# Runs on http://localhost:3000
 ```
-the_notebook/
+
+**2. Server (Multiplayer Logic)**
+```bash
+cd server
+npm install
+node server.js
+# Runs on http://localhost:3001
+```
+
+### How to Run a Session
+1.  **Start Server & Client**.
+2.  **Open Browser**: Go to `http://localhost:3000`.
+3.  **Host**: Select "Host Game" (Teacher).
+    - **Upload PDF**: In the lobby, click "Upload PDF".
+    - Select a file -> Wait for AI processing -> Click "Use Questions".
+    - Share the **Room ID** with students.
+4.  **Students**: Join via `http://localhost:3000` using the Room ID.
+5.  **Play**: Host starts the game. Students jump and solve quizzes!
+
+---
+
+## 📂 Project Structure
+
+```
+root/
 ├── client/                 
-│   └──  src/
-│         └── components/
-│                 └── Game/      
-│                 └── Home/   
-│                 └── Quiz/   
-│                 └── Room/   
-└──  server/               
-        └── server.js              
+│   └── src/
+│       ├── components/
+│       │   ├── Game/          # Phaser + React Game Logic
+│       │   │   ├── entities/  # Player class, sync logic
+│       │   │   └── scenes/    # Phaser Scenes
+│       │   ├── PDF/           # PDF extraction & AI integration
+│       │   └── Room/          # Lobby & Join logic
+│       └── ...
+└── server/               
+    └── server.js              # Socket.io events & Room handling
 ```
 
-# Adding New Levels
-- Create maps using Tiled map editor
-- Export as JSON to client/public/assets/maps/
-- Define custom objects for coins, spawn areas, and obstacles
-
-## Acknowledgments
-- Phaser 3 for the powerful game framework
-- Tiled for excellent map editing capabilities
-- Socket.io for seamless real-time communication
-T- he educational gaming community for inspiration
+## 🤝 Contributing
+- **Maps**: Create new levels using **Tiled** and export to `client/public/assets/maps`.
+- **AI**: Tweaking the prompt in `PDFUpload.jsx` can change the difficulty/style of questions.
